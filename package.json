@@ -1,0 +1,17 @@
+{
+  "name": "darkly-backend",
+  "version": "1.0.0",
+  "description": "A hapi backend for the scanner darkly app",
+  "main": "app/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dorion de Gobeo",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/hapi": "^20.1.5",
+    "@hapi/hoek": "^9.2.0",
+    "mongoose": "^5.13.2",
+    "node-tesseract-ocr": "^2.2.1"
+  }
+}
