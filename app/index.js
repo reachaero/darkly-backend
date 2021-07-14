@@ -4,11 +4,13 @@ const Hapi = require('@hapi/hapi');
 const Hoek = require('@hapi/hoek');
 const Mongoose = require('mongoose');
 const tesseract = require("node-tesseract-ocr")
+const dotenv = require('dotenv');
+dotenv.config();
 
 const init = async () => {
 
     const server = Hapi.server({
-        port: 8000,
+        port: 8001,
         host: '0.0.0.0'
     });
 
@@ -70,7 +72,7 @@ const init = async () => {
         }
     });
 
-    Mongoose.connect('mongodb://localhost:27017/darkly', {
+    Mongoose.connect(process.env.MONGODB_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     });
