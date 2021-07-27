@@ -44,7 +44,7 @@ const init = async () => {
                 oem: 1,
                 psm: 11,
                 tessedit_char_whitelist: 'abcdefghijklmnopqrstuvwxyzöäü'
-            }
+            };
             
             if(!image) {
                 return h.response();
@@ -55,14 +55,14 @@ const init = async () => {
             return tesseract
                 .recognize(Buffer.from(base64string, 'base64'), config)
                 .then(async (text) => {
-                    console.log("Result:", text)
                     
-                    const rankedProducts = await Product.find({$text: {$search: text}}, {score: {$meta: 'textScore'}}).sort({score: {$meta: 'textScore'}})
-                    console.log(rankedProducts);
+                    const rankedProducts = await Product
+                        .find({$text: {$search: text}}, {score: {$meta: 'textScore'}})
+                        .sort({score: {$meta: 'textScore'}})
+                        .lean();
                     // const product = new Product({ name: 'Olive Oil', text });
                     // product.save();
-                    
-                    return { text: Hoek.reach(rankedProducts, [0, 'name']) || 'No Matching Products' };
+                    return Hoek.merge(rankedProducts[0] || { name: "No matching products" }, { ocr: text });
                 })
                 .catch((e) => {
                     
