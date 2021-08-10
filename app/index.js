@@ -62,7 +62,7 @@ const init = async () => {
                         .lean();
                     // const product = new Product({ name: 'Olive Oil', text });
                     // product.save();
-                    return Hoek.merge(rankedProducts[0] || { name: "No matching products" }, { ocr: text });
+                    return Hoek.merge(rankedProducts[0] || { name_de: "No matching products" }, { ocr: text });
                 })
                 .catch((e) => {
                     
