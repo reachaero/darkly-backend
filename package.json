@@ -9,6 +9,7 @@
   "author": "Dorion de Gobeo",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-textract": "^3.26.0",
     "@hapi/hapi": "^20.1.5",
     "@hapi/hoek": "^9.2.0",
     "dotenv": "^10.0.0",
